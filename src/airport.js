@@ -1,20 +1,18 @@
-function Billet()  {
-  this.passager = function(name, age, sex) {
-    this.name = name;
-    this.age = age;
-    this.sex = sex;
-
-  };
-  this.vol = function (city) {
-    this.city = city;
-    this.destination = destination;
-    this.depart = depart;
-    this.horaire = horaire;
-
-
-  }
-  this.avion = function (id) {
-    this.id = id;
-
-  }
+function Airport()  {
+  this._planes = [];
+}
+Airport.prototype.planes = function () {
+  return this._planes;
 };
+Airport.prototype.clearForLanding = function (plane) {
+this._planes.push(plane);
+};
+
+Airport.prototype.clearToTakeOff = function (plane) {
+  // this._planes.pop(plane);
+  let planeIndex = this._planes.indexOf(plane)
+  this._planes.splice(planeIndex,1)
+};
+Airport.prototype.isStormy = function() {
+  return(Math.random() < 0.5 ) ? true : false
+}
